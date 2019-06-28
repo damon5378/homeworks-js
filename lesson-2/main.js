@@ -16,9 +16,9 @@ console.log(addExpenses.toLowerCase().split(', '));
 console.log(budgetDay);
 console.log(money % 30);
 
-var num = 266219;
-var lastDigit = 1;
-var multOfAllDigits = 1;
+let num = 266219;
+    lastDigit = 1;
+    multOfAllDigits = 1;
 
 while(num != 0)
 {
