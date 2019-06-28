@@ -1,5 +1,5 @@
 let money = 580000;
-    income = "150000";
+    income = "Фриланс, Спорт";
     addExpenses = "Ноутбук, Мышь, Печеньки";
     deposit = true;
     mission = 1000000;
