@@ -10,8 +10,13 @@ let cost1 = prompt('Во сколько это обойдется?');
 let cost2 = prompt('Во сколько это обойдется?');
 let mission = 1000000;
 let period = 10;
-let budgetDay = money / 30;
 let budgetMonth = money - cost1 - cost2;
+let budgetDay = budgetMonth / 30;
+
+
+console.log(budgetMonth);
+console.log(Math.ceil(mission / budgetMonth) + " месяцев до цели)))");
+console.log(Math.floor(budgetDay));
 
 if (budgetDay >= 800) {
     console.log('Высокий уровень дохода');
@@ -27,7 +32,8 @@ console.log(addExpenses.split(', '));
 console.log(typeof money);
 console.log(typeof income);
 console.log(typeof deposit);
-console.log(budgetMonth);
+
+
 
 
 
