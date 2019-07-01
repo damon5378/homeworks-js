@@ -3,9 +3,9 @@
 let money = prompt('Ваш месячный доход?');
 let income = 'Фриланс, Спорт';
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
-let deposit = console.log(confirm('Есть ли у вас депозит в банке?'));
-let mandatoryExpenses1 = console.log(prompt('Какие обязательные ежемесячные расходы у вас есть?'));
-let mandatoryExpenses2 = console.log(prompt('Какие обязательные ежемесячные расходы у вас есть?'));
+let deposit = confirm('Есть ли у вас депозит в банке?');
+let mandatoryExpenses1 = prompt('Какие обязательные ежемесячные расходы у вас есть?');
+let mandatoryExpenses2 = prompt('Какие обязательные ежемесячные расходы у вас есть?');
 let cost1 = prompt('Во сколько это обойдется?');
 let cost2 = prompt('Во сколько это обойдется?');
 let mission = 1000000;
@@ -32,10 +32,8 @@ console.log(addExpenses.split(', '));
 console.log(typeof money);
 console.log(typeof income);
 console.log(typeof deposit);
-
-
-
-
+console.log(mandatoryExpenses1);
+console.log(mandatoryExpenses2);
 
 
 
