@@ -29,10 +29,10 @@ getAccumulatedMonth();
 console.log(accumulatedMonth);
 
 function getTargetMonth() {
-    targetMonth = mission - accumulatedMonth;
+    targetMonth = Math.floor(mission / accumulatedMonth);
 }
 getTargetMonth();
-console.log(Math.ceil(targetMonth)); // вот тут что-то не то
+console.log(targetMonth + " месяца/месяцев до цели"); // вот тут что-то не то
 
 let showTypeof = function(item) {
   console.log(item, typeof item);  
