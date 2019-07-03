@@ -25,12 +25,12 @@ let start = function(){
         money = prompt('Ваш месячный доход?');
         console.log(money);
     }
-    while(isNaN(money) || money == '' || money == null)
+    while(isNaN(money) || money == '' || money == null);
     // while (isNaN(money) || money == '' || money == null){
     //     money = prompt('Ваш месячный доход?');
     //     console.log(money);
     // }
-};
+}
 start();
 
 function getExpensesMonth() {
@@ -38,11 +38,12 @@ function getExpensesMonth() {
     for(let i = 0; i < 2; i++){
         sum += +prompt('Во сколько это обойдется?');
     }
-    return sum;
-    // while(isNaN(expensesMonth) || expensesMonth == '' || expensesMonth == null){ //Валидация
-    //     console.log(expensesMonth);
-    // }
-};
+    if(!isNaN(sum) && sum != '' && sum != null){
+        return sum;
+    } else {
+        console.log('не верный тип данных');
+    } 
+}
 
 let expensesAmount = getExpensesMonth();
 
@@ -56,14 +57,13 @@ console.log(accumulatedMonth);
 function getTargetMonth() {
     targetMonth = Math.floor(mission / accumulatedMonth);
     if (targetMonth > 0){
-        console.log('Цель будет достигнута через ' + targetMonth + " месяца/месяцев"); 
+        return ('Цель будет достигнута через ' + targetMonth + " месяца/месяцев"); 
      } else {
-        console.log('Цель не будет достигнута');
+        return ('Цель не будет достигнута');
         }
     }
-getTargetMonth(); // почему когда тут писал return вместо console.log, то ничего не выводилось,
-                  // но ниже в getStatusIncome выводится
-
+getTargetMonth();
+console.log(getTargetMonth());
 
 let showTypeof = function(item) {
   console.log(item, typeof item);  
