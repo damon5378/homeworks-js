@@ -31,7 +31,7 @@ let appData = {
             appData.addExpenses = addExpenses.toLowerCase().split(',');
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
     },
-    gem: function getExpensesMonth() {
+    getExpensesMonth: function getExpensesMonth() {
         let sum = 0;
         for(let i = 0; i < 2; i++){
             if(i === 0) {
@@ -57,10 +57,10 @@ let appData = {
             }
         } 
     },
-    gam: function getAccumulatedMonth() {
+    getAccumulatedMonth: function getAccumulatedMonth() {
         accumulatedMonth = money - expensesAmount;
     },
-    gtm: function getTargetMonth() {
+    getTargetMonth: function getTargetMonth() {
         targetMonth = Math.floor(appData.mission / accumulatedMonth);
         if (targetMonth > 0){
             return ('Цель будет достигнута через ' + targetMonth + " месяца/месяцев"); 
@@ -68,7 +68,7 @@ let appData = {
             return ('Цель не будет достигнута');
             }
         },
-    gsi: function getStatusIncome() {
+    getStatusIncome: function getStatusIncome() {
         if (budgetDay >= 800) {
             return ('Высокий уровень дохода');
         } else if (budgetDay >= 300 && budgetDay < 800) {
