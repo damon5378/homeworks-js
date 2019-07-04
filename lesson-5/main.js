@@ -4,8 +4,8 @@ let money;
 let income = 'Фриланс, Спорт';
 let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
 let deposit = confirm('Есть ли у вас депозит в банке?');
-let mandatoryExpenses1 = prompt('Какие обязательные ежемесячные расходы у вас есть?');
-let mandatoryExpenses2 = prompt('Какие обязательные ежемесячные расходы у вас есть?');
+let mandatoryExpenses1;
+let mandatoryExpenses2;
 // let cost1 = +prompt('Во сколько это обойдется?');
 // let cost2 = +prompt('Во сколько это обойдется?');
 let mission = 1000000;
@@ -36,12 +36,21 @@ start();
 function getExpensesMonth() {
     let sum = 0;
     for(let i = 0; i < 2; i++){
+        if(i === 0) {
+            mandatoryExpenses1 = prompt('Какие обязательные ежемесячные расходы у вас есть?');
+        } else if(i === 1){
+            mandatoryExpenses2 = prompt('Какие обязательные ежемесячные расходы у вас есть?');
+        }
+
+
         sum += +prompt('Во сколько это обойдется?');
     }
     if(!isNaN(sum) && sum != '' && sum != null){
         return sum;
     } else {
-        console.log('не верный тип данных');
+        for(let i = 0; i < 2; i++){
+            sum += +prompt('Во сколько это обойдется?');
+        }
     } 
 }
 
