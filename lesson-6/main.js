@@ -14,6 +14,12 @@ let start = function(){
 }
 start();
 
+let mandatoryExpenses1;
+let mandatoryExpenses2;
+
+let expensesMonth;
+let targetMonth;
+
 let appData = {
     income: {},
     addIncome: [],
@@ -58,7 +64,8 @@ let appData = {
         } 
     },
     getAccumulatedMonth: function getAccumulatedMonth() {
-        accumulatedMonth = money - expensesAmount;
+        let expensesAmount = appData.getExpensesMonth();
+        let accumulatedMonth = money - expensesAmount;
     },
     getTargetMonth: function getTargetMonth() {
         targetMonth = Math.floor(appData.mission / accumulatedMonth);
@@ -81,19 +88,17 @@ let appData = {
         }
 }
 
-let mandatoryExpenses1;
-let mandatoryExpenses2;
-let accumulatedMonth;
-let expensesMonth;
-let targetMonth;
 
 
+appData.getExpensesMonth();
+appData.getAccumulatedMonth();
 console.log(appData.getAccumulatedMonth);
 // console.log(accumulatedMonth);
 
 
-appData.getTargetMonth;
+appData.getTargetMonth();
 console.log(appData.getTargetMonth);
+appData.getStatusIncome();
 
 let budgetDay = accumulatedMonth / 30;
 
