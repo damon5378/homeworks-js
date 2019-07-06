@@ -34,7 +34,6 @@ let appData = {
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
             appData.addExpenses = addExpenses.toLowerCase().split(',');
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
-            appData.expenses = function() {
                 let sum,
                     answer,
                     question;
@@ -50,19 +49,19 @@ let appData = {
                     }
                 }
                 // return sum;
-            };
     },
     getExpensesMonth: function getExpensesMonth() {
-        let sumCost;
+        let sumCost = 0;
         for(let key in appData.expenses) {
             sumCost += appData.expenses[key];
         }
-        console.log(sumCost);
+        // console.log(sumCost);
         return sumCost; 
     },
-    getAccumulatedMonth: function getAccumulatedMonth() {
+    getBudget: function getBudget() {
         // let expensesAmount = appData.getExpensesMonth();
         appData.budgetMonth = appData.budget - appData.getExpensesMonth();
+        appData.budgetDay = appData.budgetMonth / 30;
     },
     getTargetMonth: function getTargetMonth() {
        let targetMonth = Math.floor(appData.mission / appData.budgetMonth);
@@ -82,25 +81,31 @@ let appData = {
         } else if (appData.budgetDay < 1) {
             return ('Что-то пошло не так');
         }
+        },
+    include: function include(){
+        for(let key in appData){
+            console.log('Наша программа включает в себя данные: ', appData);
         }
+    }
 }
 
 
 appData.asking();
-appData.expenses();
 appData.getExpensesMonth();
-appData.getAccumulatedMonth();
-appData.getAccumulatedMonth();
+appData.getBudget();
+// appData.getBudget();
+appData.include();
 // console.log(appData.getAccumulatedMonth);
 console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
+
 
 // console.log(appData.getAccumulatedMonth);
 appData.getTargetMonth;
 
 // console.log(appData.getTargetMonth);
 
-appData.budgetDay = appData.budgetMonth / 30;
+
 
 function budgetDaily() {
     if(appData.budgetDay > 0) {
@@ -112,4 +117,4 @@ function budgetDaily() {
 budgetDaily();
 
 // console.log(appData.getStatusIncome);
-console.log(appData);
+// console.log(appData);
