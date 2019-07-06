@@ -84,7 +84,8 @@ let appData = {
         },
     include: function include(){
         for(let key in appData){
-            console.log('Наша программа включает в себя данные: ', appData);
+            console.log('Наша программа включает в себя данные: ', appData[key]); //или без key. и так и так без ошибки работает
+                                                                                 //с key больше инфы даёт
         }
     }
 }
