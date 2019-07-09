@@ -160,6 +160,7 @@ function toUpper(str) {
      console.log(toUpper(splits2 + (appData.budget - appData.getExpensesMonth())));
 
 
+
      
 
 

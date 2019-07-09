@@ -24,6 +24,8 @@ let appData = {
     expenses: {},
     addExpenses: [],
     deposit: false,
+    percentDeposit: 0,
+    moneyDeposit: 0,
     mission: 1000000,
     period: 10,
     budget: money,
@@ -31,6 +33,19 @@ let appData = {
     budgetMonth: 0,
     expensesMonth: 0,
     asking: function asking(){
+
+        if(confirm('Есть ли у вас дополнительный источник заработка?')){
+            let itemIncome;
+            let cashIncome; 
+            do {
+                itemIncome = prompt('Какой у вас дополнительный заработок?');
+                cashIncome = prompt('Сколько в месяц вы на этом зарабатываете?');
+            }
+            while(!isNaN(itemIncome) && itemIncome != '' && itemIncome != null);
+            while(isNaN(cashIncome) || cashIncome === '' || cashIncome === null);
+            appData.income[itemIncome] = cashIncome;
+        }
+
         let addExpenses = prompt('Перечислите возможные расходы за рассчитываемый период через запятую');
             appData.addExpenses = addExpenses.toLowerCase().split(',');
             appData.deposit = confirm('Есть ли у вас депозит в банке?');
@@ -61,7 +76,7 @@ let appData = {
     getBudget: function getBudget() {
         // let expensesAmount = appData.getExpensesMonth();
         appData.budgetMonth = appData.budget - appData.getExpensesMonth();
-        appData.budgetDay = appData.budgetMonth / 30;
+        appData.budgetDay = Math.floor(appData.budgetMonth / 30);
     },
     getTargetMonth: function getTargetMonth() {
        let targetMonth = Math.floor(appData.mission / appData.budgetMonth);
@@ -84,9 +99,26 @@ let appData = {
         },
     include: function include(){
         for(let key in appData){
-            console.log('Наша программа включает в себя данные: ', appData[key]); //или без key. и так и так без ошибки работает
-                                                                                 //с key больше инфы даёт
+            console.log('Наша программа включает в себя данные: ' + key + ' - ' + appData[key]); 
         }
+    },
+    getInfoDeposit: function getInfoDeposit(){
+        // if(appData.deposit){
+            
+            
+        // }
+        do{
+            appData.percentDeposit = prompt('Какой годовой процент?');
+            appData.moneyDeposit = prompt('Какая сумма заложена?');
+            console.log(appData.percentDeposit);
+            console.log(appData.moneyDeposit);
+        }
+        while(isNaN(appData.percentDeposit) || appData.percentDeposit == '' || appData.percentDeposit == null);
+        while(isNaN(appData.moneyDeposit) || appData.moneyDeposit == '' || appData.moneyDeposit == null);
+
+    },
+    calcSavedMoney: function calcSavedMoney(){
+        return appData.budgetMonth * appData.period;
     }
 }
 
@@ -96,16 +128,39 @@ appData.getExpensesMonth();
 appData.getBudget();
 // appData.getBudget();
 appData.include();
-// console.log(appData.getAccumulatedMonth);
+appData.getInfoDeposit();
+// console.log('расходы за месяц: ' + appData.getExpensesMonth());
 console.log(appData.getTargetMonth());
 console.log(appData.getStatusIncome());
-
+console.log(appData.calcSavedMoney());
+console.log(appData.percentDeposit);
+console.log(appData.moneyDeposit);
 
 // console.log(appData.getAccumulatedMonth);
-appData.getTargetMonth;
+
 
 // console.log(appData.getTargetMonth);
 
+
+let myString1 = 'расходы за месяц: ';
+let splits1 = myString1.split(', ');
+let myString2 = 'доходы за месяц: ';
+let splits2 = myString2.split(', ');
+function toUpper(str) {
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map(function(word) {
+            return word[0].toUpperCase() + word.substr(1);
+        })
+        .join(' ');
+        
+     }
+     console.log(toUpper(splits1 + appData.getExpensesMonth()));
+     console.log(toUpper(splits2 + (appData.budget - appData.getExpensesMonth())));
+
+
+     
 
 
 function budgetDaily() {
