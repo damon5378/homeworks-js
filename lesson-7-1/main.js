@@ -1,33 +1,46 @@
 'use strict';
 
 let collect = document.querySelectorAll('.books'),
-    book = document.querySelectorAll('.book');
+    book = document.querySelectorAll('.book'),
+    ul = document.querySelectorAll('ul'),
+    li = document.querySelectorAll('li');
+
+let addLi = document.createElement('li');
+addLi.textContent = 'Глава 8: За пределами ES6';
+ul[2].appendChild(addLi);
+ul[2].insertBefore(li[26], null);
+
     console.log(collect);
+    console.log(book);
+    console.log(ul);
+    console.log(li);
 
-// book = document.querySelectorAll('h2');
-// book1_1 = document.querySelectorAll('ul');
+collect[0].insertBefore(book[1], book[0]);
+collect[0].insertBefore(book[2], null);
+collect[0].insertBefore(book[4], book[3]);
 
-// collect[0].appendChild(book[0]);
-// collect[0].appendChild(book[2]);
-// collect[0].appendChild(book[5]);
-
-// collect[0].insertBefore(book[1], book[0]);
-// collect[0].insertBefore(book[4], book[2]);
-// collect[0].insertBefore(book[5], book[4]);
-
-// collect[0].insertBefore(book[3], book[2]);
 
 document.body.style.backgroundImage = 'url(image/you-dont-know-js.jpg)';
 
-// let h2 = document.querySelectorAll('h2');
+let h2 = document.querySelectorAll('h2');
 
-// h2[2].textContent = 'Книга 3. this и Прототипы Объектов';
-// h2[4].innerHTML = <h2 style="color: darkkhaki;"></h2>
+h2[2].textContent = 'Книга 3. this и Прототипы Объектов';
+h2[2].setAttribute('style', 'color: darkkhaki');
 
 let adv = document.querySelector('.adv');
-let span = document.querySelector('span');
-adv.classList.remove('adv');
 
+adv.setAttribute('style', 'display:none');
+
+ul[0].insertBefore(li[2], null);
+ul[0].insertBefore(li[6], li[4]);
+ul[0].insertBefore(li[8], li[4]);
+ul[0].insertBefore(li[2], li[10]);
+
+ul[5].insertBefore(li[55], li[48]);
+ul[5].insertBefore(li[49], li[48]);
+ul[5].insertBefore(li[50], li[48]);
+ul[5].insertBefore(li[52], li[51]);
+ul[5].insertBefore(li[53], li[51]);
 // let chapter = document.querySelectorAll('.book li');
 // chapter.className += ' chapter';
 
