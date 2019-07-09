@@ -41,35 +41,3 @@ ul[5].insertBefore(li[49], li[48]);
 ul[5].insertBefore(li[50], li[48]);
 ul[5].insertBefore(li[52], li[51]);
 ul[5].insertBefore(li[53], li[51]);
-// let chapter = document.querySelectorAll('.book li');
-// chapter.className += ' chapter';
-
-// document.querySelectorAll('.book li').classList.add('chapter');
-
-// let chap = document.querySelectorAll('books'),
-//     booka = document.getElementsByClassName('book')[4].getElementsByTagName('LI')
-
-    // chap[0].textContent = 'Глава 8: За пределами ES6';
-
-    // const divSort = () => {
-    //     let item = document.querySelectorAll('h2'),
-    //       count = 1;
-    //     newDiv = document.createElement('div');
-      
-    //     for (let i = 0; i < item.length; i++) {
-    //       for (let j = 0; j < item.length; j++) {
-      
-    //         if (+item[j].textContent.slice(-1) == count) {
-    //           newDiv.appendChild(item[j].parentNode);
-    //           count++;
-    //         }
-      
-    //       }
-    //     }
-      
-    //     document.body.removeChild(document.querySelector('.books'));
-    //     newDiv.classList.add('books');
-    //     document.body.appendChild(newDiv)
-    //   }
-      
-    //   divSort();
