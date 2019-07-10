@@ -60,7 +60,8 @@ let start = document.querySelector('#start'),
         showResult: function(){
             budgetMonthValue.value = appData.budgetMonth;
             budgetDayValue.value = appData.budgetDay;
-            expensesMonthValue.value = appData.getExpensesMonth;
+            expensesMonthValue.value = appData.expensesMonth;
+            console.log(appData.expensesMonth);
             additionalExpensesValue.value = appData.addExpenses.join(', ');
             additionalIncomeValue.value = appData.addIncome.join(',');
             targetMonthValue.value = Math.ceil(appData.getTargetMonth());
@@ -151,7 +152,7 @@ let start = document.querySelector('#start'),
             for(let key in appData.expenses) {
                 sumCost += appData.expenses[key];
             }
-            return sumCost; 
+            sumCost = appData.expensesMonth; 
         },
         getBudget: function getBudget() {
             appData.budgetMonth = appData.budget + appData.incomeMonth - appData.getExpensesMonth();
