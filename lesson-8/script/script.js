@@ -66,7 +66,10 @@ let start = document.querySelector('#start'),
             additionalExpensesValue.value = appData.addExpenses.join(', ');
             additionalIncomeValue.value = appData.addIncome.join(',');
             targetMonthValue.value = Math.ceil(appData.getTargetMonth());
-            incomePeriodValue.value = appData.calcPeriod();
+            // incomePeriodValue.value = appData.calcPeriod();
+            periodSelect.addEventListener('change', function(){
+                incomePeriodValue.value = appData.calcPeriod();
+       });
             accumulatedMonthValue.value = appData.getIncome();
         },
         addExpensesBlock: function(){
@@ -128,13 +131,13 @@ let start = document.querySelector('#start'),
         inputRange: function(){
             periodAmount.innerHTML = periodSelect.value;
             let amountPosition = (periodSelect.value / periodSelect.max);
-            if(periodSelect.value === periodSelect.min){
-                periodAmount.style.left = ((amountPosition * 100) + 2) + "%";
-            } else if (periodSelect.value === periodSelect.max){
-                periodAmount.style.left = ((amountPosition * 100) - 2) + "%";
-            } else {
-                periodAmount.style.left = (amountPosition * 100) + "%";
-            }
+            // if(periodSelect.value === periodSelect.min){
+            //     periodAmount.style.left = ((amountPosition * 100) + 2);
+            // } else if (periodSelect.value === periodSelect.max){
+            //     periodAmount.style.left = ((amountPosition * 100) - 2);
+            // } else {
+            //     periodAmount.style.left = (amountPosition * 100);
+            // }
         },
         // asking: function asking(){
     
@@ -216,6 +219,9 @@ let start = document.querySelector('#start'),
         },
         calcPeriod: function(){
             return appData.budgetMonth * periodSelect.value;
+        },
+        calcRange: function(){
+            return periodSelect.value * appData.calcPeriod;
         }
     }
 
@@ -224,6 +230,8 @@ let start = document.querySelector('#start'),
     expensesPlus.addEventListener('click', appData.addExpensesBlock);
     incomePlus.addEventListener('click', appData.addIncomeBlock);
     periodSelect.addEventListener('input', appData.inputRange, false);
+    periodSelect.addEventListener('change', appData.calcRange);
+    
     
     // console.log(appData.getTargetMonth());
     // console.log(appData.getStatusIncome());
