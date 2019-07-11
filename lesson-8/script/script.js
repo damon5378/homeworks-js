@@ -201,7 +201,7 @@ let start = document.querySelector('#start'),
         },
         getBudget: function getBudget() {
             appData.budgetMonth = appData.budget + appData.incomeMonth - appData.expensesMonth;
-            appData.budgetDay = Math.floor(appData.budgetMonth / 30);
+            appData.budgetDay = Math.ceil(appData.budgetMonth / 30);
         },
         getTargetMonth: function getTargetMonth() {
             return targetAmount.value / appData.budgetMonth;
@@ -268,24 +268,13 @@ let start = document.querySelector('#start'),
     let splits1 = myString1.split(', ');
     let myString2 = 'доходы за месяц: ';
     let splits2 = myString2.split(', ');
-    function toUpper(str) {
-        return str
-            .toLowerCase()
-            .split(' ')
-            .map(function(word) {
-                return word[0].toUpperCase() + word.substr(1);
-            })
-            .join(' '); 
-         }
-         console.log(toUpper(splits1 + appData.getExpensesMonth()));
-         console.log(toUpper(splits2 + (appData.budget - appData.getExpensesMonth())));
     
     
     function budgetDaily() {
         if(appData.budgetDay > 0) {
             console.log(appData.budgetDay);
         } else {
-            console.log('Что-то пошло не так');
+            // console.log('Что-то пошло не так');
         }
     }
     budgetDaily();
