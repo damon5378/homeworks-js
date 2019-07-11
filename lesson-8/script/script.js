@@ -1,6 +1,7 @@
 'use strict';
 
 let start = document.querySelector('#start'),
+    cancel = document.querySelector('#cancel'),
     incomePlus = document.getElementsByTagName('button')[0],
     expensesPlus = document.getElementsByTagName('button')[1],
     check = document.querySelector('#deposit-check'),
@@ -27,6 +28,16 @@ let start = document.querySelector('#start'),
     periodAmount = document.querySelector('.period-amount'),
     incomeItems = document.querySelectorAll('.income-items');
 
+    start.disabled = true;
+    salaryAmount.addEventListener('input', function(){
+        if(salaryAmount.value == '' || salaryAmount.value == null){
+            console.log('TRUE');
+        } else {
+            console.log('FALSE');
+            start.disabled = false;
+        }
+    });
+
     
     let appData = {
         income: {},
@@ -42,19 +53,16 @@ let start = document.querySelector('#start'),
         budgetMonth: 0,
         expensesMonth: 0,
         start: function(){
-            if(salaryAmount.value === ''){
-                alert('Поле "Месячный доход" обязательно для заполнения');
-                return;
-            }
             appData.budget = +salaryAmount.value;
-            // console.log(salaryAmount.value);
             appData.getExpenses();
             appData.getIncome();
             appData.getExpensesMonth();
             appData.getAddExpenses();
             appData.getAddIncome();
             appData.getBudget();
+            // appData.buttonDisabled();
             appData.showResult();
+            appData.inputsDisable();
             // appData.include();
             // appData.getInfoDeposit();
         },
@@ -62,11 +70,10 @@ let start = document.querySelector('#start'),
             budgetMonthValue.value = appData.budgetMonth;
             budgetDayValue.value = appData.budgetDay;
             expensesMonthValue.value = appData.expensesMonth;
-            console.log(appData.expensesMonth);
             additionalExpensesValue.value = appData.addExpenses.join(', ');
             additionalIncomeValue.value = appData.addIncome.join(',');
             targetMonthValue.value = Math.ceil(appData.getTargetMonth());
-            // incomePeriodValue.value = appData.calcPeriod();
+            incomePeriodValue.value = appData.calcPeriod();
             periodSelect.addEventListener('change', function(){
                 incomePeriodValue.value = appData.calcPeriod();
        });
@@ -139,6 +146,20 @@ let start = document.querySelector('#start'),
             //     periodAmount.style.left = (amountPosition * 100);
             // }
         },
+        inputsDisable: function(){
+            document.querySelectorAll('.data input[type=text]').forEach(function(item){
+                item.disabled = true;
+            });
+            start.style.display = 'none';
+            cancel.style.display = 'block';
+        },
+        // buttonDisabled: function(){
+        //     if(salaryAmount.value === '' && salaryAmount.value === null){
+        //     start.disabled = true;
+        // } else {
+        //     start.disabled = false;
+        // }
+        // },
         // asking: function asking(){
     
         //     if(confirm('Есть ли у вас дополнительный источник заработка?')){
@@ -220,17 +241,20 @@ let start = document.querySelector('#start'),
         calcPeriod: function(){
             return appData.budgetMonth * periodSelect.value;
         },
-        calcRange: function(){
-            return periodSelect.value * appData.calcPeriod;
-        }
+        // calcRange: function(){
+        //     return periodSelect.value * appData.calcPeriod;
+        // }
     }
 
     start.addEventListener('click', appData.start);
+    start.addEventListener('click', appData.inputsDisable);
+    
     
     expensesPlus.addEventListener('click', appData.addExpensesBlock);
     incomePlus.addEventListener('click', appData.addIncomeBlock);
     periodSelect.addEventListener('input', appData.inputRange, false);
-    periodSelect.addEventListener('change', appData.calcRange);
+    // periodSelect.addEventListener('change', appData.calcRange);
+    
     
     
     // console.log(appData.getTargetMonth());
