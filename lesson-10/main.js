@@ -15,7 +15,7 @@ DomElement.prototype.createElement = function(){
     } else if (this.selector[0] === '#') {
         newDom = document.createElement('p');
     }
-    newDom.textContent = 'Logo';
+    newDom.style.cssText = "content: 'Logo'";
     newDom.style.height = this.height;
     newDom.style.width = this.width;
     newDom.style.bg = this.bg;
