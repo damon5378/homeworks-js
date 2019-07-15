@@ -150,8 +150,8 @@ let start = document.querySelector('#start'),
                 if(itemIncome !== '' && cashIncome !== ''){
                     self.income[itemIncome] = cashIncome;
                 }
-                for(let key in appData.income){
-                    appData.incomeMonth += +appData.income[key];
+                for(let key in self.income){
+                    self.incomeMonth += +self.income[key];
                 }
             });
         },
