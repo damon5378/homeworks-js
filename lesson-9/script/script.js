@@ -67,6 +67,41 @@ let start = document.querySelector('#start'),
             // appData.getInfoDeposit();
         },
         cancel: function(){
+            let inputClear = document.querySelectorAll('input[type=text]');
+            inputClear.forEach(function(item){
+                item.disabled = false;
+                item.value = '';
+            });
+            periodAmount.innerHTML = 1;
+            periodSelect.value = 1;
+            expensesPlus.style.display = 'block';
+            incomePlus.style.display = 'block';
+            if(expensesItems.length === 2){
+                expensesItems[0].parentNode.removeChild(expensesItems[1]);
+            } else if (expensesItems.length === 3){
+                expensesItems[0].parentNode.removeChild(expensesItems[1]);
+                expensesItems[0].parentNode.removeChild(expensesItems[2]);
+            }
+            if(incomeItems.length === 2){
+                incomeItems[0].parentNode.removeChild(incomeItems[1]);
+            } else if (incomeItems.length === 3){
+                incomeItems[0].parentNode.removeChild(incomeItems[1]);
+                incomeItems[0].parentNode.removeChild(incomeItems[2]);
+            }
+            appData.income = {},
+            appData.incomeMonth = 0,
+            appData.addIncome = [],
+            appData.expenses = {},
+            appData.addExpenses = [],
+            appData.deposit = false,
+            appData.percentDeposit = 0,
+            appData.moneyDeposit = 0,
+            appData.budget = 0,
+            appData.budgetDay = 0,
+            appData.budgetMonth = 0,
+            appData.expensesMonth = 0,
+            start.style.display = 'block';
+            cancel.style.display = 'none';
             //###работает с формой###################
             // document.getElementById("myForm").reset();
             // document.querySelectorAll('.data input[type=text]').forEach(function(item){
@@ -112,7 +147,7 @@ let start = document.querySelector('#start'),
             targetMonthValue.value = Math.ceil(this.getTargetMonth());
             incomePeriodValue.value = this.calcPeriod();
             periodSelect.addEventListener('change', function(){
-                incomePeriodValue.value = this.calcPeriod();
+            incomePeriodValue.value = appData.calcPeriod();
        });
             accumulatedMonthValue.value = this.getIncome();
         },
