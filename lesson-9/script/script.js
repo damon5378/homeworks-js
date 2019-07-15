@@ -133,20 +133,22 @@ let start = document.querySelector('#start'),
             }
         },
         getExpenses: function(){
+            const self = this;
             expensesItems.forEach(function(item){
                 let itemExpenses = item.querySelector('.expenses-title').value;
                 let cashExpenses = item.querySelector('.expenses-amount').value;
                 if(itemExpenses !== '' && cashExpenses !== ''){
-                    appData.expenses[itemExpenses] = cashExpenses;
+                    self.expenses[itemExpenses] = cashExpenses;
                 }
             });
         },
         getIncome: function(){
+            const self = this;
             incomeItems.forEach(function(item){
                 let itemIncome = item.querySelector('.income-title').value;
                 let cashIncome = item.querySelector('.income-amount').value;
                 if(itemIncome !== '' && cashIncome !== ''){
-                    appData.income[itemIncome] = cashIncome;
+                    self.income[itemIncome] = cashIncome;
                 }
                 for(let key in appData.income){
                     appData.incomeMonth += +appData.income[key];

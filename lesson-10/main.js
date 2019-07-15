@@ -7,20 +7,17 @@ function DomElement(selector, height, width, bg, fontSize){
     this.bg = bg;
     this.fontSize = fontSize;
 }
+let question = prompt('Введите . (точку) или # (решетку)');
 DomElement.prototype.createElement = function(){
     let newDom;
-    if(this.selector[0] === '.'){
+    if(this.selector === '.'){
         newDom = document.createElement('div');
-        newDom.classList.add(this.selector.substr(1));
-    } else if (this.selector[0] === '#') {
+        newDom.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
+    } else if (this.selector === '#') {
         newDom = document.createElement('p');
+        newDom.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
     }
-    newDom.style.cssText = "content: 'Logo'";
-    newDom.style.height = this.height;
-    newDom.style.width = this.width;
-    newDom.style.bg = this.bg;
-    newDom.style.fontSize = this.fontSize;
 };
-let dom = new DomElement('some', '100px', '100px', 'red', '18');
+let dom = new DomElement(question, '100', '100', 'red', '18');
 dom.createElement();
 console.log(dom);
