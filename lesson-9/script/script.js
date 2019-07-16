@@ -114,15 +114,6 @@ let start = document.querySelector('#start'),
             incomePeriodValue.value = appData.calcPeriod();
        });
         },
-        addExpensesBlock: function(){
-            
-            let cloneExpensesItem = expensesItems[0].cloneNode(true);
-            expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
-            expensesItems = document.querySelectorAll('.expenses-items');
-            if(expensesItems.length === 3){
-                expensesPlus.style.display = 'none';
-            }
-        },
         addIncomeBlock: function(){
             
             let cloneIncomeItem = incomeItems[0].cloneNode(true);
@@ -130,6 +121,15 @@ let start = document.querySelector('#start'),
             incomeItems = document.querySelectorAll('.income-items');
             if(incomeItems.length === 3){
                 incomePlus.style.display = 'none';
+            }
+        },
+        addExpensesBlock: function(){
+            
+            let cloneExpensesItem = expensesItems[0].cloneNode(true);
+            expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
+            expensesItems = document.querySelectorAll('.expenses-items');
+            if(expensesItems.length === 3){
+                expensesPlus.style.display = 'none';
             }
         },
         getExpenses: function(){
