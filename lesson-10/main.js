@@ -19,5 +19,5 @@ DomElement.prototype.createElement = function(){
     }
 };
 let dom = new DomElement(question, '100', '100', 'red', '18');
-// dom.createElement();
+dom.createElement();
 console.log(dom);
