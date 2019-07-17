@@ -377,12 +377,11 @@ let start = document.querySelector('#start'),
         });
     }
     getIncome = () =>{
-        const self = this;
-        incomeItems.forEach(function(item){
+        incomeItems.forEach((item) =>{
             let itemIncome = item.querySelector('.income-title').value;
             let cashIncome = item.querySelector('.income-amount').value;
             if(itemIncome !== '' && cashIncome !== ''){
-                self.income[itemIncome] = cashIncome;
+                this.income[itemIncome] = cashIncome;
             }
         });
         for(let key in self.income){
@@ -399,12 +398,11 @@ let start = document.querySelector('#start'),
         }
     }
     getExpenses = () =>{
-        const self = this;
-        expensesItems.forEach(function(item){
+        expensesItems.forEach((item) =>{
             let itemExpenses = item.querySelector('.expenses-title').value;
             let cashExpenses = item.querySelector('.expenses-amount').value;
             if(itemExpenses !== '' && cashExpenses !== ''){
-                self.expenses[itemExpenses] = cashExpenses;
+                this.expenses[itemExpenses] = cashExpenses;
             }
         });
     }
@@ -482,12 +480,12 @@ let start = document.querySelector('#start'),
         return this.budgetMonth * periodSelect.value;
     }
    eventsToRunCode = () => {
-    depositCheck.addEventListener('change', function(){
+    depositCheck.addEventListener('change', () =>{
         if(depositCheck.checked){
             depositBank.style.display = 'inline-block';
             depositAmount.style.display = 'inline-block';
             this.deposit = 'true';
-            depositBank.addEventListener('change', function(){
+            depositBank.addEventListener('change', () =>{
                 let selectIndex = this.options[this.selectedIndex].value;
                 if(selectIndex === 'other') {
                     depositPercent.style.display = 'inline-block';
@@ -520,34 +518,6 @@ let start = document.querySelector('#start'),
 const runProgram = new appData();
 
 runProgram.eventsToRunProgram();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// console.log(start);
-// console.log(plus1);
-// console.log(plus2);
-// console.log(check);
-// console.log(input);
-// console.log(findValue);
 
 
 
