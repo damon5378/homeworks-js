@@ -12,9 +12,11 @@ DomElement.prototype.createElement = function(){
     let newDom;
     if(this.selector[0] === '.'){
         newDom = document.createElement('div');
+        newDom.textContent = this.selector;
         newDom.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
-    } else if (this.selector === '#') {
+    } else if (this.selector[0] === '#') {
         newDom = document.createElement('p');
+        newDom.textContent = this.selector;
         newDom.style.cssText = `height: ${this.height}px; width: ${this.width}px; background: ${this.bg}; font-size: ${this.fontSize}px;`;
     }
     document.body.appendChild(newDom);
