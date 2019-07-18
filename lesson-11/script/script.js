@@ -363,18 +363,26 @@ AppData.prototype.showResult = function(){
         incomePeriodValue.value = appData.calcPeriod();
    });
     };
-    AppData.prototype.addIncomeBlock = function() {
-        
-        let cloneIncomeItem = incomeItems[0].cloneNode(true);
-        incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
-        incomeItems = document.querySelectorAll('.income-items');
-        if(incomeItems.length === 3){
-            incomePlus.style.display = 'none';
+    AppData.prototype.addIncomeExpensesBlock = function(itemIn, btnIn, itemClass, cloneItem, itemPlus){
+        // let cloneIncomeItem = itemIn[0].cloneNode(true);
+        itemIn[0].parentNode.insertBefore(cloneItem, itemPlus);
+        itemIn = document.querySelectorAll(itemClass);
+        if(itemIn.length === 3){
+            btnIn.style.display = 'none';
         }
-        cloneIncomeItem.querySelectorAll('input').forEach((item) => {
-            item.value = '';
-        });
-    };
+    }
+    // AppData.prototype.addIncomeBlock = function() {
+        
+    //     let cloneIncomeItem = incomeItems[0].cloneNode(true);
+    //     incomeItems[0].parentNode.insertBefore(cloneIncomeItem, incomePlus);
+    //     incomeItems = document.querySelectorAll('.income-items');
+    //     if(incomeItems.length === 3){
+    //         incomePlus.style.display = 'none';
+    //     }
+    //     cloneIncomeItem.querySelectorAll('input').forEach((item) => {
+    //         item.value = '';
+    //     });
+    // };
     AppData.prototype.getIncome = function(){
         incomeItems.forEach((item) =>{
             let itemIncome = item.querySelector('.income-title').value;
@@ -383,19 +391,19 @@ AppData.prototype.showResult = function(){
                 this.income[itemIncome] = cashIncome;
             }
         });
-        for(let key in self.income){
-            self.incomeMonth += +self.income[key];
+        for(let key in this.income){
+            this.incomeMonth += +this.income[key];
         }
     };
-    AppData.prototype.addExpensesBlock = function(){
+    // AppData.prototype.addExpensesBlock = function(){
         
-        let cloneExpensesItem = expensesItems[0].cloneNode(true);
-        expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
-        expensesItems = document.querySelectorAll('.expenses-items');
-        if(expensesItems.length === 3){
-            expensesPlus.style.display = 'none';
-        }
-    };
+    //     let cloneExpensesItem = expensesItems[0].cloneNode(true);
+    //     expensesItems[0].parentNode.insertBefore(cloneExpensesItem, expensesPlus);
+    //     expensesItems = document.querySelectorAll('.expenses-items');
+    //     if(expensesItems.length === 3){
+    //         expensesPlus.style.display = 'none';
+    //     }
+    // };
     AppData.prototype.getExpenses = function(){
         expensesItems.forEach((item) =>{
             let itemExpenses = item.querySelector('.expenses-title').value;
@@ -470,7 +478,7 @@ AppData.prototype.showResult = function(){
                 depositAmount.style.display = 'inline-block';
                 this.deposit = 'true';
                 depositBank.addEventListener('change', () =>{
-                    let selectIndex = this.options[this.selectedIndex].value;
+                    let selectIndex = depositBank.options[depositBank.selectedIndex].value;
                     if(selectIndex === 'other') {
                         depositPercent.style.display = 'inline-block';
                         depositPercent.value = '';
@@ -492,8 +500,14 @@ AppData.prototype.showResult = function(){
     cancel.addEventListener('click', this.cancel);
     
     
-    expensesPlus.addEventListener('click', this.addExpensesBlock);
-    incomePlus.addEventListener('click', this.addIncomeBlock);
+    expensesPlus.addEventListener('click', () => {
+        const cloneExpensesItem = expensesItems[0].cloneNode(true);
+        this.addIncomeExpensesBlock(expensesItems, expensesPlus, '.expenses-items', cloneExpensesItem, expensesPlus);
+    });
+    incomePlus.addEventListener('click', () => {
+        const cloneIncomeItem = incomeItems[0].cloneNode(true);
+        this.addIncomeExpensesBlock(incomeItems, incomePlus, '.income-items', cloneIncomeItem, incomePlus);
+    });
     periodSelect.addEventListener('input', this.inputRange, false);
   }
 
