@@ -350,6 +350,9 @@ let start = document.querySelector('#start'),
         appData.expensesMonth = 0,
         start.style.display = 'block';
         cancel.style.display = 'none';
+        depositCheck.checked = false;
+        depositBank.style.display = 'none';
+        depositAmount.style.display = 'none';
 };
 AppData.prototype.showResult = function(){
         budgetMonthValue.value = this.budgetMonth;
@@ -451,7 +454,7 @@ AppData.prototype.showResult = function(){
         this.expensesMonth = sumCost; 
     };
     AppData.prototype.getBudget = function() {
-        this.budgetMonth = this.budget + this.incomeMonth - this.expensesMonth + (this.moneyDeposit * this.percentDeposit) / 12;
+        this.budgetMonth = Math.ceil(this.budget + this.incomeMonth - this.expensesMonth + (this.moneyDeposit * this.percentDeposit) / 12);
         this.budgetDay = Math.ceil(this.budgetMonth / 30);
     };
     AppData.prototype.getTargetMonth = function() {
