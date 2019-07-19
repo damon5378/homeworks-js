@@ -502,11 +502,13 @@ AppData.prototype.showResult = function(){
     
     expensesPlus.addEventListener('click', () => {
         const cloneExpensesItem = expensesItems[0].cloneNode(true);
-        this.addIncomeExpensesBlock(expensesItems, expensesPlus, '.expenses-items', cloneExpensesItem, expensesPlus);
+        appData.addIncomeExpensesBlock(expensesItems, expensesPlus, '.expenses-items', cloneExpensesItem, expensesPlus);
+        expensesItems = document.querySelectorAll('.expenses-items');
     });
     incomePlus.addEventListener('click', () => {
         const cloneIncomeItem = incomeItems[0].cloneNode(true);
-        this.addIncomeExpensesBlock(incomeItems, incomePlus, '.income-items', cloneIncomeItem, incomePlus);
+        appData.addIncomeExpensesBlock(incomeItems, incomePlus, '.income-items', cloneIncomeItem, incomePlus);
+        incomeItems = document.querySelectorAll('.income-items');
     });
     periodSelect.addEventListener('input', this.inputRange, false);
   }
