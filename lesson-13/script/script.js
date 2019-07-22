@@ -74,14 +74,15 @@ window.addEventListener('DOMContentLoaded', function(){
               popUpBtn.forEach((elem) => {
                 elem.addEventListener('click', () => {
                     popUp.style.display = 'block';
-                    popUp.animate([
-                        { transform: 'translate3D(0, -500px, 0)' }, 
-                        { transform: 'translate3D(0, 0, 0)' }
-                      ], {
-                        duration: 1000,
-                      })
                       if(screen.width < 768){
-                        popUp.style.display = 'none';
+                        popUp.style.display = 'block';
+                      } else {
+                        popUp.animate([
+                            { transform: 'translate3D(0, -500px, 0)' }, 
+                            { transform: 'translate3D(0, 0, 0)' }
+                          ], {
+                            duration: 1000,
+                          })
                       }
                 });
               });
