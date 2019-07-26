@@ -243,8 +243,21 @@ window.addEventListener('DOMContentLoaded', function(){
     slider();
 
     const inputNumbers = () => {
-      const input = document.querySelectorAll('.calc-item');
-        input.value = input.value.replace(/\d/g, '');
+      const inputSquare = document.querySelector('.calc-square'),
+          inputCount = document.querySelector('.calc-count'),
+          inputDay = document.querySelector('.calc-day');
+
+        inputSquare.addEventListener('input', () => {
+          inputSquare.value = inputSquare.value.replace(/[^0-9]/ig, '');
+        });
+
+        inputCount.addEventListener('input', () => {
+          inputCount.value = inputCount.value.replace(/[^0-9]/ig, '');
+        });
+
+        inputDay.addEventListener('input', () => {
+          inputDay.value = inputDay.value.replace(/[^0-9]/ig, '');
+        });
     };
     inputNumbers();
 
@@ -277,3 +290,4 @@ window.addEventListener('DOMContentLoaded', function(){
     });
     
 });
+
