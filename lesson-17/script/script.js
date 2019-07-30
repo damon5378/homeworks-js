@@ -267,15 +267,15 @@ window.addEventListener('DOMContentLoaded', function(){
         });
 
         formPhone.addEventListener('input', () => {
-          formPhone.value =  formPhone.value.replace(/[^\+/0-9]/ig, '');
+          formPhone.value =  formPhone.value.replace(/[^\+0-9]/ig, '');
         });
 
         topForm.addEventListener('input', () => {
-          topForm.value = topForm.value.replace(/[^\+/0-9]/ig, '');
+          topForm.value = topForm.value.replace(/[^\+0-9]/ig, '');
         });
 
         formPopup.addEventListener('input', () => {
-          formPopup.value = formPopup.value.replace(/[^\+/0-9]/ig, '');
+          formPopup.value = formPopup.value.replace(/[^\+0-9]/ig, '');
         });
 
         formName.addEventListener('input', () => {
