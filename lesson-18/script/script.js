@@ -422,14 +422,13 @@ statusMessage.style.cssText = 'font-size: 2rem; color: #fff;';
 ourForm.addEventListener('submit', (event) => {
 event.preventDefault();
 ourForm.appendChild(statusMessage);
-ourForm.reset();
 // statusMessage.textContent = loadMessage;
 const formData = new FormData(ourForm);
 let body = {};
 formData.forEach((val, key) => {
   body[key] = val;
 });
-
+ourForm.reset();
 
 const postData = (body) => {
 return new Promise(function (resolve, reject){
