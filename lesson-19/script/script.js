@@ -410,56 +410,59 @@ bodyFormEvent.addEventListener('input', (event) => {
 
 
 const sendForm = (ourForm) => {   //!!!!!!!!!!!!!!!!!!!!!!!!!!!
-const errorMessage = 'Что-то пошло не так...',
-loadMessage = 'Загрузка...',
-successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
+      const errorMessage = 'Что-то пошло не так...',
+      loadMessage = 'Загрузка...',
+      successMessage = 'Спасибо! Мы скоро с вами свяжемся!';
 
 
-const statusMessage = document.createElement('div');
-statusMessage.style.cssText = 'font-size: 2rem; color: #fff;';
+      const statusMessage = document.createElement('div');
+      statusMessage.style.cssText = 'font-size: 2rem; color: #fff;';
 
 
-ourForm.addEventListener('submit', (event) => {
-event.preventDefault();
-ourForm.appendChild(statusMessage);
-ourForm.reset();
-// statusMessage.textContent = loadMessage;
-const formData = new FormData(ourForm);
-let body = {};
-formData.forEach((val, key) => {
-  body[key] = val;
-});
-ourForm.reset();
+      ourForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        ourForm.appendChild(statusMessage);
 
-postData(body)
-.then((response) => {
-    if(response.status !== 200){
-      throw new Error('Status Network Not 200');
-    }
-  statusMessage.innerHTML = successMessage
-})
-.catch((error) => {
-  statusMessage.innerHTML = errorMessage
-});
+        statusMessage.textContent = loadMessage;
 
-const postData = (body) => {
-  return fetch('./server.php', {
-    method: 'POST',
-    headers: {
-      'Content-type': 'application/json'
-    },
-    body: JSON.stringify(body)
+        const formData = new FormData(ourForm);
+        let body = {};
+        formData.forEach((val, key) => {
+          body[key] = val;
+        });
+        
+      postData(body)
+      .then((response) => {
+          if(response.status !== 200){
+            throw new Error('Status Network Not 200');
+          }
+        statusMessage.innerHTML = successMessage;
+      })
+      .catch((error) => {
+        statusMessage.innerHTML = errorMessage;
+        console.error(error);
+      });
+        
+      ourForm.reset();
+  
   });
 
+  const postData = (body) => {
+    return fetch('./server.php', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
 
-
+};
 
  // end of ourForm.addEventListener
-}; // end of sendForm
-
+ // end of sendForm
+};
 sendForm(form); ////!!!!!!!!!!!!!!!!!!!
 sendForm(formQuest); ////!!!!!!!!!!!!!!!!!!!
 sendForm(formPopup); ////!!!!!!!!!!!!!!!!!!!
     
 });
-
