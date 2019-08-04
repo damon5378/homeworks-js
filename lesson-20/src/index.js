@@ -10,10 +10,10 @@ import inputNumbers from './modules/inputNumbers';
 import ourTeamWrap from './modules/ourTeamWrap';
 import sendFormModule from './modules/sendForm';
 
-countTimer('13 august 2019 00:00:00');
+
 
 window.addEventListener('DOMContentLoaded', () => {
-    
+    countTimer('13 august 2019 00:00:00');
     toggleMenu();
     togglePopUp();
     tabs();
