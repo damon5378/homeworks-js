@@ -1,7 +1,8 @@
-const form = document.getElementById('form1'),
-formQuest = document.getElementById('form2'),
-formPopup = document.getElementById('form3'),
-bodyFormEvent = document.body;
+const sendFormModule = () => {
+  const form = document.getElementById('form1'),
+    formQuest = document.getElementById('form2'),
+    formPopup = document.getElementById('form3'),
+    bodyFormEvent = document.body;
 
 bodyFormEvent.addEventListener('input', (event) => {
 let target = event.target;
@@ -69,5 +70,10 @@ const postData = (body) => {
 
 // end of ourForm.addEventListener
 // end of sendForm
+
 };
-export default sendForm;
+sendForm(form);
+sendForm(formQuest); 
+sendForm(formPopup);
+};
+export default sendFormModule;
